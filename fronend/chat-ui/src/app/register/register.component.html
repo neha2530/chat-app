@@ -1,0 +1,73 @@
+<div class="container mt-2 mb-4">
+  <div class="row justify-content-md-center">
+      <div class="col-sm-4 border border-primary shadow rounded pt-2">
+      <div class="col-sm-12">
+<form class="AS">
+ <h1>
+       REGISTER YOURSELF
+ </h1>  
+ <div class ="user">
+        <label class="font-weight-bold">FirstName:<small class="text-danger"></small></label>
+        <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="EnterNAme"[(ngModel)] = "firstname" name="firstname" #firstname1="ngModel" required > 
+               <div *ngIf="firstname1.invalid && (firstname1.dirty || firstname1.touched)"
+                    class="alert">
+<div *ngIf="firstname1.errors?.['required']" >
+                   bsdk naam daal...
+</div>    
+              </div>
+ </div>
+<div class="eml">
+         <label class="font-weight-bold">Email:<small class="text-danger"></small></label>
+         <input type="text" name="Email" id="Email" class="form-control" placeholder="EnterEmailId" [(ngModel)] = "email" name = "email">
+</div>
+
+<div class Psw>
+      <label class="font-weight-bold">Password:<small class="text-danger"></small></label>
+      <input type="text" name="password" id="password" class="form-control" placeholder="Enter Password" [(ngModel)] = "password" name = "password "#password1="ngModel" required minlength="4" maxlength="8">
+<div *ngIf="password1.invalid && (password1.dirty || password1.touched)"
+  class="alert">
+
+<div *ngIf="password1.errors?.['required']" class="hgh">
+    password is required.
+</div>
+    <div *ngIf="password1.errors?.['minlength']">
+       Password must be  4 character long.
+    </div>
+    <div *ngIf="password1.errors?.['maxlength']">
+       Password must be upto 8 character long.
+    </div>
+</div>
+
+</div>
+<div class hu>
+      <label class="font-weight-bold">Confirm Password:<small class="text-danger"></small></label>
+      <input type="text" name="CPassword" id="CPassword" class="form-control" placeholder="CnfrmUrPswrd" Id="CPassword"[(ngModel)]="confirmpassword" #Cpassword="ngModel" required minlength="4" maxlength="8">
+      <div *ngIf="Cpassword.invalid && (Cpassword.dirty || Cpassword.touched)">
+            <div *ngIf="Cpassword.errors?.['required']" >
+                 Confirm password is required.
+              </div>
+                  <div *ngIf="Cpassword.errors?.['minlength']">
+                  Confirm Password must be  4 character long.
+                  </div>
+                  <div *ngIf="Cpassword.errors?.['maxlength']">
+                     Confirm Password must be upto 8 character long.
+                  </div>
+              </div>
+
+</div>
+
+<div>
+      <label class="font-weight-bold">PhoneNo:<small class="text-danger"></small></label>
+      <input type="number" name="phoneno" id="Phoneno" class="form-control" placeholder="phoneno" [(ngModel)] = "phoneNo" name = "phoneNo">
+</div>
+<div class ="text-center">
+      <button type="submit" class ="btn btn-primary" (click) = "registerUser()">Register me</button><br/>
+</div>
+
+if you have an account then login <b></b>
+<button class ="btn btn-info"(click)= "goToLogin()"> login</button>
+
+</form>
+</div>
+</div>
+</div>

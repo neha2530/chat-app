@@ -1,0 +1,38 @@
+<div class="container mt-2 mb-4">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-4 border border-primary shadow rounded pt-2">
+        <div class="col-sm-12">
+<form class ="text-center">
+    <h1>
+        LOGIN
+    </h1>
+<div class="User" >
+       <label class="font-weight-bold">Email:<small class="text-danger"></small></label>
+       <input type="text" name="Email" id="Email" class="form-control" placeholder="EnterEmailId" [(ngModel)]="email" name="email">
+</div>    
+ <div class ="Psw">
+       <label class="font-weight-bold">Password:</label>
+       <input type="password" name="password" id="password" class="form-control" placeholder="EnterPassword" [(ngModel)]="password" name="password"><br/>
+</div>
+
+<div class="text-center">
+       <button  class="btn btn-block btn-danger block mb-4" (click) ="goToWelcome()"> Login</button>
+</div>
+       
+<div class ="Sv">
+<label>
+    <input type="checkbox" checked="checked" name="save me" > Save info.<br/>
+    
+</label>
+</div>
+<div class="text-center">
+    if you dont have an account??. 
+</div>
+<div class="text-center">
+       <button class ="" (click) = "gotToRegister()">register</button><br/>
+</div>   
+</form>
+</div>
+</div>
+</div>
+</div>

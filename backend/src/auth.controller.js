@@ -1,0 +1,40 @@
+const express = require("express")
+const router = express.Router()
+const db = require("./../database")
+
+router.post("/api/register", async (req, res, next) => {
+    try {
+        // check if email already exists
+        const response = await db.executeQuery(`Select * from users where email  = '${req.body.email}'`)
+        console.log({x: response})
+        if(response.length > 0 ) {
+            return res.status(400).send({message: "Email already exist"})
+
+        }
+        const query = `INSERT INTO USERS (FirstNAME, Phone_No, Email, Password)
+        VALUES('${req.body.firstname}','${req.body.phoneNo}','${req.body. email}' ,'${req.body. password}')`
+// send data to 3rd and save it.
+console.log({query})
+   await db.executeQuery(query);
+    return res.send({message: "User registered successfully"})
+
+    }catch(error) {
+        res.status(500).send({message: error.message})
+    }
+   })
+
+router.post("/api/login",async (req,res,next)=>{
+try{
+    const response= await db.executeQuery( `SELECT * from users where email='${req.body.email}' AND password= '${req.body.password}'`)
+    if ( response.length>0){
+         return res.send({message:"login successfully",isloggedin:true})
+    }
+ else {
+           return res.status(401).send({message : "chutiye password sahi daal", isloggedin:false})
+ }   
+} catch(error) {
+    res.status(500).send({message:error.message})
+}
+})
+
+module.exports = router; 
