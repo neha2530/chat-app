@@ -1,11 +1,12 @@
 const express = require("express")
 const router = express.Router()
 const db = require("./../database")
+const jwt = require("jsonwebtoken")
 
 router.post("/api/register", async (req, res, next) => {
     try {
         // check if email already exists
-        const response = await db.executeQuery(`Select * from users where email  = '${req.body.email}'`)
+        const response =  await db.executeQuery(`Select * from users where email  = '${req.body.email}'`)
         console.log({x: response})
         if(response.length > 0 ) {
             return res.status(400).send({message: "Email already exist"})
@@ -25,9 +26,13 @@ console.log({query})
 
 router.post("/api/login",async (req,res,next)=>{
 try{
-    const response= await db.executeQuery( `SELECT * from users where email='${req.body.email}' AND password= '${req.body.password}'`)
+    const response=  await db.executeQuery( `SELECT * from users where email='${req.body.email}' AND password= '${req.body.password}'`)
+
     if ( response.length>0){
-         return res.send({message:"login successfully",isloggedin:true})
+        const payload = response[0];
+        delete payload.Password
+        const token =jwt.sign({...payload}, "xwewasfgjsj")
+         return res.send({message:"login successfully",token:token})
     }
  else {
            return res.status(401).send({message : "chutiye password sahi daal", isloggedin:false})

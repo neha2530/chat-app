@@ -26,15 +26,16 @@ export class LoginComponent implements OnInit {
   }
 
   goToWelcome() {
-    console.log(this.email);
-    console.log(this.password)
+    
+
 
   this.HttpClient.post("http://localhost:3000/api/login",{
   email: this.email,
   password:this.password,
   }).subscribe(
-    (data) => { 
+    (data :any) => { 
       this.router.navigate(["welcome"]) 
+     sessionStorage.setItem("token", data.token)
   },
     (error) => { 
       alert(error.error.message)

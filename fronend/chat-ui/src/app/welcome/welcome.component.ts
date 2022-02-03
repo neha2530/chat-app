@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private httpClient: HttpClient ) { }
+  userList: any[] = [];
   ngOnInit(): void {
+
+    this.httpClient.get("http://localhost:3000/api/users",  {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}}
+  ).subscribe(
+    (data:any)=>{
+      this.userList =data.data;
+    },
+    (error)=>{
+        alert(error.error.message)
+
+    }
+  )
   }
 
 }
+

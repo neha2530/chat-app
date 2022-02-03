@@ -1,0 +1,26 @@
+.chat-box {
+    height: 500px;
+    width: 900px;
+    border-radius: 5px;
+    border: 2px black solid;
+}
+
+svg {
+    height: inherit;
+}
+.msg_cotainer_send{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: #a6dd82;
+    padding: 10px;
+    position: relative;
+}
+.msg_cotainer{
+   
+    border-radius: 25px;
+    background-color: #e078ac;
+    padding: 10px;
+    position: relative;
+}
