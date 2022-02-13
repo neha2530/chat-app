@@ -24,6 +24,8 @@ console.log({query})
     }
    })
 
+   let x = 0;
+
 router.post("/api/login",async (req,res,next)=>{
 try{
     const response=  await db.executeQuery( `SELECT * from users where email='${req.body.email}' AND password= '${req.body.password}'`)
@@ -31,7 +33,7 @@ try{
     if ( response.length>0){
         const payload = response[0];
         delete payload.Password
-        const token =jwt.sign({...payload}, "xwewasfgjsj")
+        const token = jwt.sign({...payload}, "xwewasfgjsj")
          return res.send({message:"login successfully",token:token})
     }
  else {

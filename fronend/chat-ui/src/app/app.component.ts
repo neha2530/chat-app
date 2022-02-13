@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private router:Router,public userService:UserService){}
   title = 'chat-ui';
+  loginPage(){
+    this.userService.isLoggedIn=false;
+    this.userService.loggedInUser = {};
+    sessionStorage.removeItem("token")
+    this.router.navigate([""])
+  }
 }

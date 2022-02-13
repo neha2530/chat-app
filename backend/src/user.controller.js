@@ -1,13 +1,23 @@
+const e = require("express")
 const express = require("express")
 const router = express.Router()
 const db = require("./../database")
+
+
 
 router.get("/api/users" ,async (req,res,next)=>{
     try {
         // Perpare Query to get data;
         //get data from database;
         //send data back to FE;
-        const query = "select Email,FirstNAME  from users"
+        let query;
+        const searchtxt= req.query.searchTxt
+        if(searchtxt){
+            query=  `select Email,FirstNAME  from users WHERE Email != '${req.loggedInEmail}' AND FirstNAME LIKE '%${searchtxt}%'`
+        }else{
+            query = `select Email,FirstNAME  from users WHERE Email != '${req.loggedInEmail}'`
+        }
+        console.log(query)
         const data = await db.executeQuery(query)
         return res.send({message: "users list",data:data})
     }

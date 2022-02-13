@@ -1,8 +1,14 @@
 .chat-box {
     height: 500px;
     width: 900px;
-    border-radius: 5px;
-    border: 2px black solid;
+    border-radius: 10px;
+    border:10px solid cadetblue;
+    overflow-y: scroll;
+    
+}
+
+li {
+    cursor: pointer;
 }
 
 svg {
@@ -15,12 +21,74 @@ svg {
     border-radius: 25px;
     background-color: #a6dd82;
     padding: 10px;
-    position: relative;
+    padding: 1em;
+      text-align: left;
+      line-height: 1.5em;
+    position: relative;  
 }
-.msg_cotainer{
-   
-    border-radius: 25px;
-    background-color: #e078ac;
-    padding: 10px;
-    position: relative;
+
+.view{
+    height: 1000px;
 }
+.list-group-item{
+    background: transparent !important;
+    font-size: x-large;
+    font-style: italic;
+    font:bold;
+    color: aliceblue;
+
+}
+
+
+.rgba-gradient {
+    background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+}
+
+.messageInput {
+    width: 900px;
+}
+
+
+
+  .container {
+    padding: 5% 5%;
+  }
+  
+  /* CSS talk bubble */
+  .talk-bubble {
+      margin: 15px;
+    display: inline-block;
+    position: relative;
+      width: fit-content;
+      height: auto;
+      border-radius: 25px;
+      background-color: pink;
+  }
+  
+  
+  
+  
+
+  
+  
+  .tri-right.left-top:after{
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+    left: -20px;
+      right: auto;
+    top: 0px;
+      bottom: auto;
+      border: 22px solid;
+      border-color: pink transparent transparent transparent;
+  }
+  
+/* talk bubble contents */
+  .talktext{
+    padding: 1em;
+      text-align: left;
+      line-height: 1.5em;
+  }
+  
+  

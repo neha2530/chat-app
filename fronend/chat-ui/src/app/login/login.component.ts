@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:  Router, private HttpClient: HttpClient)  { }
+  constructor(private router:  Router, private HttpClient: HttpClient, private userService: UserService)  { }
   email :string="";
   password="";
 
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["register"])
   }
   sayYesIm(){
-
+    
     this.router.navigate(["y"])
   }
 
@@ -34,8 +35,13 @@ export class LoginComponent implements OnInit {
   password:this.password,
   }).subscribe(
     (data :any) => { 
-      this.router.navigate(["welcome"]) 
+      this.userService.isLoggedIn=true
      sessionStorage.setItem("token", data.token)
+      const token =  sessionStorage.getItem("token")
+      if(token) {
+        this.userService.loggedInUser = this.userService.extractUserInfoFromToken( token || "" );
+      }
+      this.router.navigate(["welcome"]) 
   },
     (error) => { 
       alert(error.error.message)
