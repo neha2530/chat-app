@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocketService } from '../services/socket.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:  Router, private HttpClient: HttpClient, private userService: UserService)  { }
+  constructor(private router:  Router, private HttpClient: HttpClient, private userService: UserService, private socketService: SocketService)  { }
   email :string="";
   password="";
 
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
       this.userService.isLoggedIn=true
      sessionStorage.setItem("token", data.token)
       const token =  sessionStorage.getItem("token")
+      this.socketService.connectSocket()
       if(token) {
         this.userService.loggedInUser = this.userService.extractUserInfoFromToken( token || "" );
       }

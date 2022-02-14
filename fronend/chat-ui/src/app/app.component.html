@@ -11,13 +11,13 @@
         <a class="nav-link" >Home</a>
       </li>
       <li class="nav-item">
-        <a *ngIf="userService.isLoggedIn" class="nav-link" (click) = "loginPage()">Signout</a>
+        <a *ngIf="userService.isLoggedIn" class="nav-link" (click) = "signOut()">Signout</a>
       </li>
     </ul>
   </nav>
 
 
-  <div class="view" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/91.webp'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="view" >
     <router-outlet></router-outlet>
     <!-- Footer -->
 <footer  class="page-footer  bg-dark navbar-dark font-small blue">

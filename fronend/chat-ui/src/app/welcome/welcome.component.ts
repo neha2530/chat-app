@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { SelectorMatcher } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {Router }from'@angular/router';
+import { SocketService } from '../services/socket.service';
 import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-welcome',
@@ -10,7 +11,14 @@ import { UserService } from '../services/user.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private  router: Router , private httpClient: HttpClient, private userService: UserService) {}
+  constructor(private  router: Router , private httpClient: HttpClient,
+     private userService: UserService, private socketService: SocketService) {
+    this.socketService.socket.on("message", (data: any)=> {
+      console.log(data)
+    })
+
+
+  }
   message="";
   sender = "";
   reciever = "";

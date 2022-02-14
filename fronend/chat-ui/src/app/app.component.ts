@@ -10,7 +10,7 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   constructor(private router:Router,public userService:UserService){}
   title = 'chat-ui';
-  loginPage(){
+  signOut(){
     this.userService.isLoggedIn=false;
     this.userService.loggedInUser = {};
     sessionStorage.removeItem("token")
