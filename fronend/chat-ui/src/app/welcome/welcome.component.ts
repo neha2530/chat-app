@@ -14,6 +14,9 @@ export class WelcomeComponent implements OnInit {
   constructor(private  router: Router , private httpClient: HttpClient,
      private userService: UserService, private socketService: SocketService) {
     this.socketService.socket.on("message", (data: any)=> {
+      if (data.email==this.reciever){
+      this.loadMessgaes()
+      }
       console.log(data)
     })
 

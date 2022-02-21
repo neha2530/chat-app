@@ -3,7 +3,6 @@ const http = require("http");
 const { Server } =  require("socket.io");
 
 const app = require("./app");
-console.log(app)
 const server = http.createServer(app);
 
 
@@ -13,5 +12,5 @@ const server = http.createServer(app);
     origin: "*"
   }
 });
-
-module.exports = {server, io}
+global.io=io;
+module.exports = {server}

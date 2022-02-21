@@ -6,9 +6,9 @@ const mysql = require('mysql');
 * Connection build a stairs b/w backend and databasde.
 */
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
+  host: "database-1.caaorwajiduu.us-east-1.rds.amazonaws.com",
+  user: "admin",
+  password: "Wpadmin123#",
   database: "chat"
 });
 

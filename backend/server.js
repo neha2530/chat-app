@@ -1,5 +1,5 @@
-const  app = require("./src/app")
-const { server, io}  = require("./src/socketInstance");
+
+const { server}  = require("./src/socketInstance");
 const tokenVerifer=require("./src/services/token-verifier")
 const database = require("./database")
 
@@ -15,7 +15,6 @@ io.on("connection", (socket) => {
     socket.join(userInfo.Email);
   console.log("Socket bhi Connected")
 });
-
 
 /*
 *

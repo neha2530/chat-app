@@ -17,7 +17,7 @@ router.get("/api/users" ,async (req,res,next)=>{
         }else{
             query = `select Email,FirstNAME  from users WHERE Email != '${req.loggedInEmail}'`
         }
-        console.log(query)
+        
         const data = await db.executeQuery(query)
         return res.send({message: "users list",data:data})
     }

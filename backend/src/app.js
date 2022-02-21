@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
-const http = require("http")
-const database = require("../database")
+const path =require('path')
 const cors = require("cors");
 const authController = require("./auth.controller")
 const userController = require("./user.controller")
@@ -10,13 +9,16 @@ const tokenVerifer =  require("./services/token-verifier")
 const unProtectedRoutes = [
     "/api/login",
     "/api/register",
+    "/"
 ]
 app.use(cors({
     origin:"*"
 }))
+app.use(express.static(path.join(__dirname,'/public')))
 app.use((req, res, next) => {
-    console.log("yes")
+    
     if(!unProtectedRoutes.includes(req.url)) {
+        console.log(req.url)
         const tokenHeader = req.headers.authorization || "";
         const token = tokenHeader.substring(7);
         const userInfo = tokenVerifer.tokenVerifer(token);
