@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
 
     if(this.firstname && this.email && this.password && this.phoneNo)
  {
-  this.httpClient.post("http://localhost:3000/api/register",
+  this.httpClient.post(`${environment.baseUrl}/api/register`,
   {
     firstname: this.firstname,
     email: this.email,

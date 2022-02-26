@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { SelectorMatcher } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {Router }from'@angular/router';
+import { environment } from 'src/environments/environment';
 import { SocketService } from '../services/socket.service';
 import { UserService } from '../services/user.service';
 @Component({
@@ -30,7 +31,7 @@ export class WelcomeComponent implements OnInit {
  messageList : any []  = [];
   ngOnInit(): void {
 
-    this.httpClient.get("http://localhost:3000/api/users",  {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}}
+    this.httpClient.get(`${environment.baseUrl}/api/users`,  {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}}
   ).subscribe(
     (data:any)=>{
       this.userList =data.data;
@@ -46,7 +47,7 @@ export class WelcomeComponent implements OnInit {
 
   }
   search(){
-    this.httpClient.get(`http://localhost:3000/api/users?searchTxt=${this.searchTxt}`,{headers:{"Authorization":`Bearer ${sessionStorage.getItem("token")}`}} 
+    this.httpClient.get(`${environment.baseUrl}/api/users?searchTxt=${this.searchTxt}`,{headers:{"Authorization":`Bearer ${sessionStorage.getItem("token")}`}} 
     ).subscribe(
       (data:any)=>{
         this.userList=data.data;
@@ -66,7 +67,7 @@ export class WelcomeComponent implements OnInit {
   loadMessgaes() {
     const loggedInUserInfo = this.userService.extractUserInfoFromToken(sessionStorage.getItem('token') || "")
     this.sender = loggedInUserInfo.Email;
-    this.httpClient.get(`http://localhost:3000/api/messages?firstPerson=${this.sender}&secondPerson=${this.reciever}`, 
+    this.httpClient.get(`${environment.baseUrl}/api/messages?firstPerson=${this.sender}&secondPerson=${this.reciever}`, 
     {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}}
     ).subscribe(
       (data: any) => {
@@ -87,7 +88,7 @@ export class WelcomeComponent implements OnInit {
     const loggedInUserInfo = this.userService.extractUserInfoFromToken(sessionStorage.getItem('token') || "")
     console.log(loggedInUserInfo)
     this.sender = loggedInUserInfo.Email;
-    this.httpClient.post("http://localhost:3000/api/messages", //this is your first argument
+    this.httpClient.post(`${environment.baseUrl}/api/messages`, //this is your first argument
       {message:this.message, sender:  this.sender,reciever: this.reciever }, // this is your second argument
       {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}} // this is you 3 argument   
       ).subscribe(

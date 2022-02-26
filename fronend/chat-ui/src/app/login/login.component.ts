@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { SocketService } from '../services/socket.service';
 import { UserService } from '../services/user.service';
 
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
     
 
 
-  this.HttpClient.post("http://localhost:3000/api/login",{
+  this.HttpClient.post(`${environment.baseUrl}/api/login`,{
   email: this.email,
   password:this.password,
   }).subscribe(
