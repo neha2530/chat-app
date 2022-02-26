@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { SelectorMatcher } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {Router }from'@angular/router';
 import { environment } from 'src/environments/environment';
 import { SocketService } from '../services/socket.service';
@@ -23,6 +23,7 @@ export class WelcomeComponent implements OnInit {
 
 
   }
+  @ViewChild("chatBox") chatBox!: ElementRef;
   message="";
   sender = "";
   reciever = "";
@@ -30,7 +31,6 @@ export class WelcomeComponent implements OnInit {
   userList: any[] = [];
  messageList : any []  = [];
   ngOnInit(): void {
-
     this.httpClient.get(`${environment.baseUrl}/api/users`,  {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}}
   ).subscribe(
     (data:any)=>{
@@ -72,6 +72,7 @@ export class WelcomeComponent implements OnInit {
     ).subscribe(
       (data: any) => {
         this.messageList = data.data;
+        this.chatBox.nativeElement.scrollTop = this.chatBox.nativeElement.scrollHeight;
       },
       (error) => {
         alert(error.error.message)
