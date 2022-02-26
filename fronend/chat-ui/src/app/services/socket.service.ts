@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client'
+import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -22,7 +23,7 @@ export class SocketService {
         reconnectionDelay: 3000,
       }
       console.log("Initializeing")
-    this.socket =  io(`http://localhost:3000`, {
+    this.socket =  io(`${environment.baseUrl}`, {
         auth: {
           token :`Bearer ${sessionStorage.getItem("token")}`,
         },
