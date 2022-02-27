@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
   password=""  ;
   confirmpassword="";
   phoneNo="";
-  passwordMistmatch: string =  "";         
+  passwordMistmatch: string =  "";    
+  username: string="";     
   ngOnInit(): void {
   }
   goToLogin(){
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    if(this.firstname && this.email && this.password && this.phoneNo)
+    if(this.firstname && this.email && this.password && this.phoneNo && this.username)
  {
   this.httpClient.post(`${environment.baseUrl}/api/register`,
   {
@@ -50,6 +51,7 @@ export class RegisterComponent implements OnInit {
     email: this.email,
     password:this.password,
     phoneNo:this.phoneNo,
+    username:this.username,
   
   }).subscribe(
     (data:any)=>{

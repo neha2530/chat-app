@@ -3,7 +3,8 @@ CREATE TABLE USERS (
     FirstNAME varchar(250),
     Phone_No varchar(250),
     Email varchar(250),
-    Password varchar(250)
+    Password varchar(250),
+    UserName varchar(250)
 );
 CREATE TABLE Messages (
     Sender varchar(245),

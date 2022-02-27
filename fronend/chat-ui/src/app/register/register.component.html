@@ -64,6 +64,10 @@
                      </div>
                   </div>
                   <div>
+                     <label class="font-weight-bold">UserName:<small class ="text-danger"></small></label>
+                     <input type="text" name="UserName" id="UserName" class="form-control" placeholder="EnterUserName"[(ngModel)] = "username" name="username">
+                  </div>
+                  <div>
                      <label class="font-weight-bold">PhoneNo:<small class="text-danger"></small></label>
                      <input pattern="([7|8|9])[0-9]{9}" type="number" name="phoneno" id="Phoneno" class="form-control" placeholder="phoneno" [(ngModel)] = "phoneNo" name = "phoneNo" #phoneno="ngModel" required maxlength="10"><br>
                      <div *ngIf="phoneno.invalid && (phoneno.dirty || phoneno.touched)"

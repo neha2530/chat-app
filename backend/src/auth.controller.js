@@ -12,8 +12,8 @@ router.post("/api/register", async (req, res, next) => {
             return res.status(400).send({message: "Email already exist"})
 
         }
-        const query = `INSERT INTO users (FirstNAME, Phone_No, Email, Password)
-        VALUES('${req.body.firstname}','${req.body.phoneNo}','${req.body. email}' ,'${req.body. password}')`
+        const query = `INSERT INTO users (FirstNAME, Phone_No, Email, Password,UserName)
+        VALUES('${req.body.firstname}','${req.body.phoneNo}','${req.body. email}' ,'${req.body. password}','${req.body.username}')`
 // send data to 3rd and save it.
    await db.executeQuery(query);
     return res.send({message: "User registered successfully"})

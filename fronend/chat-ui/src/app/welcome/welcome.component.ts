@@ -27,6 +27,7 @@ export class WelcomeComponent implements OnInit {
   message="";
   sender = "";
   reciever = "";
+  recieverUserName="";
   searchTxt=""
   userList: any[] = [];
  messageList : any []  = [];
@@ -59,8 +60,9 @@ export class WelcomeComponent implements OnInit {
     console.log(this.searchTxt)
   }
 
-  assignReciever(email: string) {
+  assignReciever(email: string,UserName: string) {
     this.reciever = email;
+    this.recieverUserName = UserName;
     this.loadMessgaes();
   }
   

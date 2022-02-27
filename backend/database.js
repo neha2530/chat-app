@@ -8,7 +8,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: "database-1.caaorwajiduu.us-east-1.rds.amazonaws.com",
   user: "admin",
-  password: "Wpadmin123#",
+  password: "Wpadmin123#", 
   database: "chat"
 });
 

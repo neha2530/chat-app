@@ -13,9 +13,9 @@ router.get("/api/users" ,async (req,res,next)=>{
         let query;
         const searchtxt= req.query.searchTxt
         if(searchtxt){
-            query=  `select Email,FirstNAME  from users WHERE Email != '${req.loggedInEmail}' AND FirstNAME LIKE '%${searchtxt}%'`
+            query=  `select Email,FirstNAME,UserName from users WHERE Email != '${req.loggedInEmail}' AND FirstNAME LIKE '%${searchtxt}%'`
         }else{
-            query = `select Email,FirstNAME  from users WHERE Email != '${req.loggedInEmail}'`
+            query = `select Email,FirstNAME,UserName  from users WHERE Email != '${req.loggedInEmail}'`
         }
         
         const data = await db.executeQuery(query)
