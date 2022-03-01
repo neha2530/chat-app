@@ -29,6 +29,7 @@ export class WelcomeComponent implements OnInit {
   reciever = "";
   recieverUserName="";
   searchTxt=""
+  MsgID=""
   userList: any[] = [];
  messageList : any []  = [];
   ngOnInit(): void {
@@ -60,10 +61,26 @@ export class WelcomeComponent implements OnInit {
     console.log(this.searchTxt)
   }
 
+
   assignReciever(email: string,UserName: string) {
     this.reciever = email;
     this.recieverUserName = UserName;
     this.loadMessgaes();
+  }
+  DeleteMessage(messageID:any){
+  this.MsgID= messageID;
+  this.httpClient.post(`${environment.baseUrl}/api/deleteMessage`,
+  {messageID:this.MsgID,sender:this.sender,reciever:this.reciever},
+  {headers: {"Authorization": `Bearer ${sessionStorage.getItem("token")}`}}
+  ).subscribe(
+    (data:any)=>{
+      console.log(data.data);
+     this. loadMessgaes();
+    },
+    (error)=>{
+      alert(error.error.message)
+    }
+  )
   }
   
   loadMessgaes() {
@@ -82,6 +99,7 @@ export class WelcomeComponent implements OnInit {
     )
 
   }
+
 
   SendMessage(){
     if(!this.message ||!this.reciever){

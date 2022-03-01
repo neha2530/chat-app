@@ -16,13 +16,21 @@
            <div class="well chat-box shadow p-3 mb-5  rounded " #chatBox [scrollTop]="chatBox.scrollHeight">
               <div   *ngFor = "let message of messageList">
                  <div  *ngIf = "message.Reciever !== reciever" style="border: 1px black;" class =" talk-bubble tri-right left-top d-flex justify-content-start mb-4">
-                    <div class =" talktext ">
-                       {{message.Message}}
+                    <div class =" talktext " >
+                     <button type="button" class="close"(click)="DeleteMessage(message.ID)" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                       {{message.Message}} <br>
+                       {{message.Time | date: 'short'}}
                     </div>
                  </div>
                  <div *ngIf = "message.Reciever == reciever" class ="d-flex justify-content-end mb-4">
                     <div class="msg_cotainer_send" >
-                       {{message.Message}}
+                     <button type="button" class="close"(click)="DeleteMessage(message.ID)" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                     {{message.Message}} <br>
+                     {{message.Time | date: 'short'}}
                     </div>
                  </div>
                  <hr>

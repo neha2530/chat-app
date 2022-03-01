@@ -11,7 +11,7 @@ CREATE TABLE Messages (
     Reciever varchar(234),
     Message varchar(234),
     Time varchar(456)
-);
+    ID varchar(250);
 
 -- // Black_Listed_Users
 -- // blockBy , blockedOne
