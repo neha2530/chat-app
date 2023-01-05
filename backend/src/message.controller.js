@@ -11,7 +11,7 @@ router.post("/api/messages", async(req,res,next)=>{
         await db.executeQuery(query);
         
       io.to(req.body.reciever).emit("message", {email: req.body.sender} ) // to is basically list of users which a re currently using our applkicationnpm start
-        return res.send({message: "bhej diya messga ho jayegi setting teri"})
+        return res.send({message: "Message Sent!!"})
     } catch (error) {
         res.status(500).send({message: error.message})
     }
