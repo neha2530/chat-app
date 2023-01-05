@@ -36,7 +36,7 @@ try{
          return res.send({message:"login successfully",token:token})
     }
  else {
-           return res.status(401).send({message : "chutiye password sahi daal", isloggedin:false})
+           return res.status(401).send({message : "Password is wrong", isloggedin:false})
  }   
 } catch(error) {
     res.status(500).send({message:error.message})
